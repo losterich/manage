@@ -48,6 +48,7 @@ class HttpRequest{
     request(options){
         // 创建axios实例
         const instance = axios.create()
+        // 拦截请求配置
         options = {...this.getInsideConfig(),...options}
 
         this.interceptors(options) // 使用拦截器

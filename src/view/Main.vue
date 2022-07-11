@@ -9,6 +9,7 @@
               <commonheader></commonheader>
             </el-header>
             <el-main>
+              <commonTag></commonTag>
               <router-view></router-view>
             </el-main>
           </el-container>
@@ -20,13 +21,15 @@
 // 组件引入
 import CommonSide from '../components/CommonSide.vue'
 import CommonHeader from '../components/CommonHeader.vue'
+import CommonTag from '../components/CommonTag.vue'
 
 export default {
   name: 'Main',
   components: {
     // 组价注册，组件名:组件
       commonside:CommonSide,
-      commonheader:CommonHeader
+      commonheader:CommonHeader,
+      commonTag:CommonTag
   },
 
 }
@@ -59,5 +62,6 @@ export default {
     text-align: center;
     line-height: 60px;
     height: 100%;
+    display: flex;
   }
 </style>

@@ -4,7 +4,11 @@
         <div class="btn" @click="collapseMenu">
             <el-button plain class="el-icon-menu" size="mini" active-text-color="#ffd04b"></el-button>
         </div>
-           <h3>首页</h3>
+
+        <!-- 面包屑 -->
+          <el-breadcrumb separator="/">
+            <el-breadcrumb-item v-for="item in tags" :key="item.path" :to="{path:item.path }">{{item.label}}</el-breadcrumb-item>
+          </el-breadcrumb> 
       </div>
      
 
@@ -21,21 +25,27 @@
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
+import {mapMutations,mapState} from 'vuex'
+
 export default {
     name:'CommonHeader',
     data(){
        return {
-          userImg:require('../assets/img.jpeg')
+          userImg:require('../assets/img.jpeg'),
        }
     },
     methods:{
         ...mapMutations('isCollapse',['collapseMenu'])
     },
     computed:{
-
+        ...mapState('tab',{tags:'tabsList'})
+        
+    },
+    mounted(){
+      
     }
 }
+
 </script>
 
 <style lang="less" scoped>
@@ -56,6 +66,10 @@ header{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+}
+.el-breadcrumb{
+  margin-left: 20px;
 }
 .l-content{
   display: flex;
@@ -70,6 +84,10 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .el-breadcrumb-item{
+    cursor: pointer;
+    color: white;
   }
 }
 .r-content{

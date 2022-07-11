@@ -16,7 +16,7 @@ const router = new VueRouter({
             component:main,
             children: [
                 {
-                    path: 'home',
+                    path: '/',
                     name: 'home',
                     component:home
                 },
@@ -29,6 +29,16 @@ const router = new VueRouter({
                     path: 'mall',
                     name: 'mall',
                     component:mall
+                },
+                {
+                    path: 'page1',
+                    name: 'page1',
+                    component:() => import('../view/other/page1.vue')
+                },
+                {
+                    path: 'page2',
+                    name: 'page2',
+                    component:() => import('../view/other/page2.vue')
                 }
             ]
         },

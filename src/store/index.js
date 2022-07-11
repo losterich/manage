@@ -9,9 +9,12 @@ Vue.use(Vuex)
 
 // 导入模块
 import isCollapse from "./isCollapse"
+import tab from "./tab"
 
 export default new Vuex.Store({
     modules:{
         isCollapse,
+        tab
+
     }
 })

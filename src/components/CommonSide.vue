@@ -13,7 +13,7 @@
             </template>
             <el-menu-item-group v-for="(sub_item,sub_index) in item.children" :key="sub_item.path">
 
-            <el-menu-item :index="sub_index">{{sub_item.label}}</el-menu-item>
+            <el-menu-item @click="push(sub_item)" :index="sub_index">{{sub_item.label}}</el-menu-item>
             </el-menu-item-group>
         
         </el-submenu>
@@ -24,7 +24,7 @@
 
 
 <script>
-import {mapState} from 'vuex'
+import {mapState,mapMutations} from 'vuex'
 
   export default {
     
@@ -84,12 +84,12 @@ import {mapState} from 'vuex'
       handleClose(key, keyPath) {
         console.log(key, keyPath);
       }, 
-      push(item){
-        console.log(this.$store.state.isCollapse)
-        console.log(item.name)
+      push(item) {
           this.$router.push({
             name:item.name,   
       })
+      // 点击调用commit方法，传入点击菜单项的值（面包屑数据）,tab/selectMenu 给tab模块下的Mutations的selectMenu
+      this.$store.commit('tab/selectMenu',item)
       }
 
       
@@ -103,6 +103,9 @@ import {mapState} from 'vuex'
         },
         ...mapState('isCollapse',['isCollapse'])
         
+    },
+    mounted(){
+      console.log(this.$store)
     }
   }
 </script>
