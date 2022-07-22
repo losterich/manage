@@ -103,15 +103,18 @@ export default {
   },
   methods:{
       confirm(){
-        if(operateType === 'edit'){
-           this.$http.post('/user/edit', this.operateForm).then(res => {
+        if(this.operateType === 'edit'){
+           this.$http.post('/api/user/edit', this.operateForm).then(res => {
              // 关闭弹窗
              this.isShow = false
+             console.lo(res.data)
            })
-        }else if(operateType === 'add'){
-           this.$http.post('/user/add', this.operateForm).then(res => {
+        }else if(this.operateType === 'add'){
+           this.$http.post('/api/user/add', this.operateForm).then(res => {
              // 关闭弹窗
+             console.log(this.operateForm)
              this.isShow = false
+             console.log(res.data)
            })
         }
       },
