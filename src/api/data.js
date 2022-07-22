@@ -16,3 +16,12 @@ export const getData = ()=>{
         // 默认get请求
     })
 }
+
+export const getUser = (params)=>{
+    return axios.request({
+        url: '/api/user/getUser',
+        method:'get',
+        params
+    })
+}
+

@@ -17,7 +17,8 @@
           <span><img class="user" :src="userImg" ></span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="a">个人中心</el-dropdown-item>
-            <el-dropdown-item command="b">退出</el-dropdown-item> 
+                                          <!-- 组件添加点击事件，加 .native -->
+            <el-dropdown-item command="b" @click.native="logOut">退出</el-dropdown-item> 
           </el-dropdown-menu>
         </el-Dropdown>
       </div>
@@ -35,7 +36,17 @@ export default {
        }
     },
     methods:{
-        ...mapMutations('isCollapse',['collapseMenu'])
+        ...mapMutations('isCollapse',['collapseMenu']),
+
+        // 退出登录，清除token
+        logOut(){
+          // 清除token
+          this.$store.commit('user/clearToken')
+          // 清除菜单缓存
+          this.$store.commit('tab/clearMenu')
+          // 跳转到登录页面
+          this.$router.push({name:'login'})
+        }
     },
     computed:{
         ...mapState('tab',{tags:'tabsList'})

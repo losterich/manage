@@ -1,6 +1,6 @@
 import Mock from 'mockjs'
 
-// get请求从config.url获取参数，post从confir.body 中获取参数
+// get请求从config.url获取参数，post从config.body 中获取参数
 function param2Obj(url) {
     const search = url.split('?')[1]
     if(!search){
@@ -10,9 +10,9 @@ function param2Obj(url) {
     return JSON.parse(
         '{"' + 
         decodeURIComponent(search)
-        .replace(/"/g ,'\\"')
-        .replace(/&/g,'","')
-        .replace(/=/g,'":"')+
+        .replace(/"/g, '\\"')
+        .replace(/&/g, '","')
+        .replace(/=/g, '":"')+
         '"}'
     )
 }
@@ -20,6 +20,7 @@ function param2Obj(url) {
 let List = []
 const count = 200
 
+// 相关信息模拟
 for (let i = 0;i < count;i++) {
     List.push(
       Mock.mock({
@@ -43,13 +44,14 @@ export default {
      */
 
 getUserList: config => {
-   const {name, page = 1 ,limit = 20} = param2Obj(config.url)
+   const {name, page = 1 ,limit = 10} = param2Obj(config.url)
     console.log('name:'+ name, 'page:' + page, '分页大小limit：' + limit)
     const mockList = List.filter(user => {
         if(name && user.name.indexOf(name) === -1 && user.addr.indexOf(name) === -1)  return false
         return true
     })
     const pageList = mockList.filter((item, index) => index < limit * page &&index >= limit * (page - 1))
+    console.log(pageList)
     return {
         code:'0',
         count:mockList.length,
@@ -63,8 +65,7 @@ getUserList: config => {
  * @return {{code:number, data:{message: string}}}
  */
 createUser:config => {
-    const {name, addr, age, birth, sex} = JSON.parse(config.body);
-    console.log(JSON.parse(config.body))
+    const {name, addr, age, birth, sex} = JSON.parse(config.body)
     List.unshift({
         id:Mock.Random.guid(),
         name:name, 
@@ -87,7 +88,7 @@ createUser:config => {
  * @return{*}
  */
 
- deletrUser: config =>{
+ deleteUser: config =>{
     const {id} = param2Obj(config.url)
     if(!id) {
         return{
@@ -109,12 +110,12 @@ createUser:config => {
  * return {code:number data:{message:string}}
  */
 updateUser:config => {
+
   const {name, addr, age, birth, sex} = JSON.parse(config.body);
   const sex_num = parseInt(sex)
-
   List.some(u => {
-    u.id = name
-    u,addr = addr
+    u.name = name
+    u.addr = addr
     u.age = age
     u.birth = birth
     u.sex = sex_num

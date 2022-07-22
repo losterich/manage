@@ -6,7 +6,7 @@ import {Main,Aside,Header,Container,Menu,Submenu
     ,DropdownItem,Row,Card,Col,Table, TableColumn,
     Breadcrumb, BreadcrumbItem, Tag, Form, FormItem,
     Input, Select, Option, Switch, DatePicker,Dialog,
-    Button,
+    Button, Pagination, Message, MessageBox, 
   } from 'element-ui'
   import 'element-ui/lib/theme-chalk/index.css';
   
@@ -40,4 +40,11 @@ import {Main,Aside,Header,Container,Menu,Submenu
   Vue.component(Switch.name,Switch)
   Vue.component(Dialog.name,Dialog)
   Vue.component(Button.name,Button)
+  Vue.component(Pagination.name,Pagination)
+
+  // 全局绑定
+  Vue.prototype.$confirm = MessageBox.confirm
+  Vue.prototype.$message = Message
+
+
   

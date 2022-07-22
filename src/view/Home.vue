@@ -117,42 +117,42 @@ export default {
             totalBuy:'总购买',
           },
           countData: [
-                {
-        name: '今日支付订单',
-        value: '123',
-        icon:'success',
-        color:'#FF502F'
-    },
-    {
-        name: '今日支付订单',
-        value: '123',
-        icon:'success',
-        color:'#FF502F'
-    },
-    {
-        name: '今日支付订单',
-        value: '123',
-        icon:'success',
-        color:'#FF502F'
-    },
-    {
-        name: '今日支付订单',
-        value: '123',
-        icon:'success',
-        color:'#FF502F'
-    },
-    {
-        name: '今日支付订单',
-        value: '123',
-        icon:'success',
-        color:'#FF502F'
-    },
-    {
-        name: '今日支付订单',
-        value: '123',
-        icon:'success',
-        color:'#FF502F'
-    },
+          {
+          name: '今日支付订单',
+          value: '123',
+          icon:'success',
+          color:'#FF502F'
+          },
+          {
+          name: '今日支付订单',
+          value: '123',
+          icon:'success',
+          color:'#FF502F'
+          },
+          {
+          name: '今日支付订单',
+          value: '123',
+          icon:'success',
+          color:'#FF502F'
+          },
+          {
+          name: '今日支付订单',
+          value: '123',
+          icon:'success',
+          color:'#FF502F'
+          },
+          {
+          name: '今日支付订单',
+          value: '123',
+          icon:'success',
+          color:'#FF502F'
+          },
+          {
+          name: '今日支付订单',
+          value: '123',
+          icon:'success',
+          color:'#FF502F'
+          },
           ],
        }
     },

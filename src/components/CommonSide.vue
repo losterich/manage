@@ -31,51 +31,8 @@ import {mapState,mapMutations} from 'vuex'
 
     data() {
       return {
-        menu:[
-    {
-        path: '/',
-        name: 'home',
-        label: '首页',
-        icon: 's-home',
-        url:'Home/home'
-    },
-    {
-        path: '/mall',
-        name: 'mall',
-        label: '商品管理',
-        icon:'video-play',
-        url:'MallManage/MallManage'
-    },
-    {
-        path:'user',
-        name: 'user',
-        label: '用户管理',
-        icon: 'user',
-        url:'UserManager/UserManager'
-    },
-    {   
-        label:'其他',
-        icon: 'location',
-        children: [
-            {
-                path: '/page1',
-                name: 'page1',
-                label: '页面1',
-                icon: 'setting',
-                url:'Other/PageOne'
-            },
-            {
-                path: '/page2',
-                name: 'page2',
-                label: '页面2',
-                icon: 'setting',
-                url:'Other/PageTwo'
-        
-            }
-        ]
-    }
-]
-      };
+        menu:[]
+      }
     },
     methods: {
       handleOpen(key, keyPath) {
@@ -92,21 +49,24 @@ import {mapState,mapMutations} from 'vuex'
       this.$store.commit('tab/selectMenu',item)
       }
 
+
       
     },
     computed:{
         noChildren(){
-           return this.menu.filter(item => !item.children)
+           return this.Menu.filter(item => !item.children)
         },
         hasChildren(){
-           return this.menu.filter(item =>  item.children)
+           return this.Menu.filter(item =>  item.children)
         },
-        ...mapState('isCollapse',['isCollapse'])
+        ...mapState('isCollapse',['isCollapse']),
+
+        // 获取菜单数据
+        Menu(){
+          return this.$store.state.tab.menu
+        }
         
     },
-    mounted(){
-      console.log(this.$store)
-    }
   }
 </script>
 <style lang = "less" scoped >
